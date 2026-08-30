@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>JobCheck — Scam-Proof Your Job Search</title>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Background blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Intro Overlay (rocket, typewriter) -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-content">
+            <div class="typewriter-container">
+                <span class="typewriter-text" id="typewriterText"></span>
+            </div>
+            <div class="rocket-container" id="rocketContainer">
+                <div class="rocket-halo"></div>
+                <div class="rocket-wrapper" id="rocketWrapper">
+                    <div class="rocket-body">
+                        <div class="rocket-nose"></div>
+                        <div class="rocket-window"></div>
+                        <div class="rocket-fin-left"></div>
+                        <div class="rocket-fin-right"></div>
+                    </div>
+                    <div class="ignition-flash" id="ignitionFlash"></div>
+                    <div class="flame" id="flame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Main app shell -->
+    <div class="app-shell" id="appShell" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="new-chat-btn" id="newChatBtn">+ New chat</button>
+                <button class="sidebar-toggle" id="sidebarCloseBtn">×</button>
+            </div>
+            <div class="sessions-list" id="sessionsList"></div>
+        </aside>
+
+        <!-- Main content area -->
+        <div class="main-area">
+            <div class="chat-wrapper" id="chatWrapper">
+                <!-- Empty state -->
+                <div class="empty-state" id="emptyState">
+                    <h2 class="empty-greeting">What job are you checking today?</h2>
+                    <p class="empty-subtext">Paste a job listing or ask a question — we'll check for scams, salary, and your fit.</p>
+                </div>
+
+                <!-- Conversation area -->
+                <div class="conversation" id="conversation"></div>
+
+                <!-- Input bar -->
+                <div class="input-bar-container">
+                    <div id="fileChipContainer"></div>
+                    <div id="fileError" class="file-error"></div>
+                    <div class="input-bar">
+                        <button class="btn-plus" id="btnPlus" title="Attach PDF, DOCX, TXT, or image" type="button">+</button>
+                        <input type="file" id="fileInput" accept=".pdf,.docx,.txt,.jpg,.jpeg,.png,.webp" style="display:none">
+                        <textarea id="chatInput" rows="1" placeholder="Paste a job listing or ask about a company" autocomplete="off"></textarea>
+                        <button class="btn-send" id="btnSend" title="Send" type="button">↑</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile hamburger button -->
+    <button class="sidebar-toggle" id="sidebarOpenBtn" style="position: fixed; top: 12px; left: 12px; z-index: 30; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 8px; cursor: pointer; display: none;">☰</button>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
