@@ -151,7 +151,20 @@ User: ${jobText}
 Assistant:`;
         }
 
-        // Non‑streaming: call generateContent
+        // Build contents for generateContent
+        let contents;
+        if (imageData) {
+            contents = {
+                parts: [
+                    { text: prompt },
+                    imageData
+                ]
+            };
+        } else {
+            contents = { text: prompt };
+        }
+
+        // Non-streaming: try models
         const models = ['gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3-flash', 'gemini-3.1-flash-lite', 'gemini-2.5-flash'];
         let lastError = null;
 
@@ -244,6 +257,7 @@ Assistant:`;
             }
         }
 
+        console.error('All models failed:', lastError);
         res.status(200).json({
             type: 'error',
             text: 'Sorry, the AI service is temporarily unavailable. Please try again in a few moments.'
